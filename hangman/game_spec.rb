@@ -14,13 +14,12 @@ describe Game do
 
   end
 
-  skip 'can place a letter on the board' do
+  it 'can place a letter on the board' do
     x = Game.new
 
     x.take_turn('t', 3)
 
-    # I see the C on the board (at 3?)
-    expect(x.letter_at 3).to eq 'C'
+    expect(x.letter_at 3).to eq 't'
   end
 
 

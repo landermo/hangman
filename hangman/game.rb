@@ -2,11 +2,11 @@ Dictionary = ["banana", "jazz", "something"]
 
 class Game
 
- def initialize
-   @guesses = []
-   @word = Dictionary.sample
-   @turns_left = 7
- end
+  def initialize
+    @guesses = []
+    @word = Dictionary.sample
+    @turns_left = 7
+  end
 
   def show_guesses
     puts @guesses.join(',')
@@ -18,7 +18,7 @@ class Game
     print 'Player: Guess a letter >'
     letter = gets.chomp.downcase.strip
     if @word.include? letter
-        puts 'Correct'
+      puts 'Correct'
     else
       puts 'No'
       @turns_left -= 1
@@ -26,9 +26,20 @@ class Game
     @guesses.push letter
   end
 
- def out_of_turns
-   @turns_left == 0
- end
+  def out_of_turns
+    @turns_left == 0
+  end
+
+  def show_board
+    @word.chars.each do |char|
+      if @guesses.include? char
+        print char
+      else
+        print '_'
+      end
+    end
+    puts ' '
+  end
 
 end
 
@@ -36,6 +47,7 @@ end
 g = Game.new
   until g.out_of_turns do
     g.prompt
+    g.show_board
     g.show_guesses
     end
 
@@ -74,11 +86,6 @@ g = Game.new
 #   end
 #
 #
-#   def show_board
-#     "
-#     #{letter_at} 1 #{letter_at} 2 #{letter_at} 3
-#       ---------      --------       --------
-#     "
-#   end
+
 # end
 #

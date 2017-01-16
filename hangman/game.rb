@@ -1,15 +1,16 @@
 Dictionary = ["banana", "jazz", "something"]
 
 class Game
-  attr_reader :turns_left
 
  def initialize
    @guesses = []
    @word = Dictionary.sample
+   @turns_left = 7
  end
 
   def show_guesses
     puts @guesses.join(',')
+    puts "You have #{@turns_left} turns left"
   end
 
   def prompt
@@ -18,26 +19,25 @@ class Game
     letter = gets.chomp.downcase.strip
     if @word.include? letter
         puts 'Correct'
-    else puts 'No'
+    else
+      puts 'No'
+      @turns_left -= 1
     end
     @guesses.push letter
   end
 
-
+ def out_of_turns
+   @turns_left == 0
+ end
 
 end
 
 
-
 g = Game.new
-  loop do
+  until g.out_of_turns do
     g.prompt
     g.show_guesses
-  end
-
-
-
-
+    end
 
 
 #   def take_turn(letter)
@@ -60,18 +60,7 @@ g = Game.new
 #     @word = word
 #   end
 #
-#
-#
-#
-#
-#
-#   def lose
-#     lose_game = false
-#     if @turns_left == 0
-#       lose_game = true
-#     end
-#     lose_game
-#   end
+
 #
 #   def player_wins
 #     if @good_guesses == @word

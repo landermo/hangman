@@ -1,11 +1,8 @@
-Dictionary = ["banana", "jazz", "something"]
-
 class Game
   attr_reader :word
 
   def initialize
     @guesses = []
-    # @word = Dictionary.sample
     @turns_left = 7
 
     contents = File.read '/usr/share/dict/words'

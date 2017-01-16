@@ -3,28 +3,42 @@ class Game
   attr_accessor :guesses
 
  def initialize
-   @word = ['cat']
+   @word = ["c", "a", "t"]
    @turns_left = 6
-   @good_guesses = []
-   @bad_guesses = []
+
+
    #@letters_remaining = @guesses[3]
  end
 
 
   def take_turn(letter)
+    good_guesses = []
+    bad_guesses = []
     if turns_left != 0
 
       @word.each do |x|
-      if @good_guesses.include? letter
-        @good_guesses.push letter
-        return @good_guesses
+      if @word.include? letter
+        good_guesses.push letter
+        return good_guesses
       else
         @turns_left -= 1
-        @bad_guesses.push letter
+        bad_guesses.push letter
         return '_'
       end
     end
     end
+  end
+
+  def word
+    @word = word
+  end
+
+  def good_guesses
+    @good_guesses
+  end
+
+  def bad_guesses
+    @bad_guesses
   end
 
 

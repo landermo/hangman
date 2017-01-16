@@ -21,7 +21,7 @@ describe Game do
 
     x.take_turn('t')
 
-    expect(x.letter_at 3).to eq 't'
+    expect(x.good_guesses).to eq 't'
   end
 
 

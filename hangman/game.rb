@@ -1,11 +1,16 @@
 Dictionary = ["banana", "jazz", "something"]
 
 class Game
+  attr_reader :word
 
   def initialize
     @guesses = []
-    @word = Dictionary.sample
+    # @word = Dictionary.sample
     @turns_left = 7
+
+    contents = File.read '/usr/share/dict/words'
+    words = contents.split
+    @word = words.sample
   end
 
   def show_guesses
@@ -14,7 +19,7 @@ class Game
   end
 
   def prompt
-    puts "The answer is #{@word}"
+    # puts "The answer is #{@word}"
     print 'Player: Guess a letter > '
     letter = gets.chomp.downcase.strip
     if @word.include? letter
@@ -46,16 +51,16 @@ class Game
     @word.chars.all? do |letter|
       @guesses.include? letter
     end
-    puts 'You win'
   end
 
 end
 
 
-
 g = Game.new
   until g.out_of_turns || g.player_wins do
-    g.prompt
     puts g.show_board
+    g.prompt
     g.show_guesses
   end
+
+puts "The answer was #{g.word}"

@@ -1,13 +1,13 @@
 class Player
-  def initialize
+    attr_reader :letter
 
-  end
+    def initialize letter
+      @letter = letter
+    end
 
-  def players
-
-  end
   def prompt
     puts 'Player: Guess a letter'
-    gets.chomp
+    @guess = gets.chomp.downcase.strip
   end
 end
+

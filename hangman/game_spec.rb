@@ -31,8 +31,7 @@ describe Game do
 
     x.take_turn('t')
 
-
-    expect(guesses).to eq 't'
+    expect(@good_guesses).to eq 't'
   end
 
   it 'can display blanks'

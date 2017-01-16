@@ -7,9 +7,12 @@
 # Display a useful message if a user guesses the same letter twice (and not count off for the second guess)
 
 g = Game.new
-until g.player_wins ||g.turns_left == 0
+@word = 'Cat'
+
+
+until g.player_wins || g.lose
   g.show_board
-  p.prompt
-  g.take_turn (letter, position)
+  g.prompt
+  g.take_turn (letter)
 end
 

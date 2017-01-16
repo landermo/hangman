@@ -31,47 +31,25 @@ class Game
   end
 
   def show_board
+    board = []
     @word.chars.each do |char|
       if @guesses.include? char
-        print char
+        board.push char
       else
-        print '_'
+        board.push '_'
       end
     end
-    puts ' '
+    board.join(' ')
   end
-
 end
 
 
 g = Game.new
   until g.out_of_turns do
     g.prompt
-    g.show_board
+    puts g.show_board
     g.show_guesses
     end
-
-
-#   def take_turn(letter)
-#     if turns_left != 0
-#
-#       @word.each do |x|
-#       if @word.include? letter
-#         good_guesses.push letter
-#         return good_guesses
-#       else
-#         @turns_left -= 1
-#         bad_guesses.push letter
-#         return '_'
-#       end
-#     end
-#     end
-#   end
-#
-#   def word
-#     @word = word
-#   end
-#
 
 #
 #   def player_wins
@@ -80,12 +58,3 @@ g = Game.new
 #     end
 #     player_wins
 #     end
-#
-#   def letter_at (position)
-#     @word[position]
-#   end
-#
-#
-
-# end
-#

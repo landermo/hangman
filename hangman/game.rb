@@ -15,7 +15,7 @@ class Game
 
   def prompt
     puts "The answer is #{@word}"
-    print 'Player: Guess a letter >'
+    print 'Player: Guess a letter > '
     letter = gets.chomp.downcase.strip
     if @word.include? letter
       puts 'Correct'
@@ -41,20 +41,21 @@ class Game
     end
     board.join(' ')
   end
+
+  def player_wins
+    @word.chars.all? do |letter|
+      @guesses.include? letter
+    end
+    puts 'You win'
+  end
+
 end
 
 
+
 g = Game.new
-  until g.out_of_turns do
+  until g.out_of_turns || g.player_wins do
     g.prompt
     puts g.show_board
     g.show_guesses
-    end
-
-#
-#   def player_wins
-#     if @good_guesses == @word
-#       player_wins = true
-#     end
-#     player_wins
-#     end
+  end

@@ -16,6 +16,10 @@ class Game
     puts "The answer is #{@word}"
     print 'Player: Guess a letter >'
     letter = gets.chomp.downcase.strip
+    if @word.include? letter
+        puts 'Correct'
+    else puts 'No'
+    end
     @guesses.push letter
   end
 

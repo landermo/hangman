@@ -16,3 +16,7 @@ until g.player_wins || g.lose
   g.take_turn (letter)
 end
 
+loop do
+  g.prompt
+  g.show_guesses
+end

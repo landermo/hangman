@@ -10,7 +10,10 @@ class Game
 
     contents = File.read '/usr/share/dict/words'
     words = contents.split
-    @word = words.sample
+    good_words = words.select do |w|
+      4 <= w.length && w.length <= 9 && w.downcase == w
+    end
+    @word = good_words.sample
   end
 
   def show_guesses

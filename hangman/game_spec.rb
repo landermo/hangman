@@ -10,9 +10,9 @@ describe Game do
 
     # I take one turn ...
 
-    x.take_turn('t')
+    x.prompt
 
-    expect(x.turns_left).to eq 5
+    expect(x.turns_left).to eq 6
 
   end
 
